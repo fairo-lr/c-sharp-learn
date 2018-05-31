@@ -1,0 +1,1078 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_AUTHORITY”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_AUTHORITY">
+          <Key>
+            <PropertyRef Name="AU_OUR_ID" />
+            <PropertyRef Name="AU_OM_ID" />
+          </Key>
+          <Property Name="AU_OUR_ID" Type="int" Nullable="false" />
+          <Property Name="AU_OM_ID" Type="int" Nullable="false" />
+          <Property Name="AU_DEPS" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_BUDGET_TYPE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_BUDGET_TYPE">
+          <Key>
+            <PropertyRef Name="OBT_ID" />
+            <PropertyRef Name="OBT_NUMBER" />
+          </Key>
+          <Property Name="OBT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBT_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="OBT_DESCRIPTION" Type="varchar" MaxLength="200" />
+          <Property Name="OBT_NUMBER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OBT_DEPART" Type="varchar" MaxLength="15" />
+          <Property Name="OBT_SUM" Type="float" />
+          <Property Name="OBT_CREATE_DATE" Type="date" />
+          <Property Name="OBT_NOTE" Type="varchar(max)" />
+          <Property Name="OBT_YEAR" Type="varchar" MaxLength="10" />
+          <Property Name="OBT_ENABLE" Type="char" MaxLength="1" />
+          <Property Name="OBT_RECORDER" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_CG”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_CG">
+          <Key>
+            <PropertyRef Name="CG_RUN_ID" />
+          </Key>
+          <Property Name="CG_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="CG_TITLE" Type="varchar" MaxLength="500" />
+          <Property Name="CG_SEQ" Type="varchar" MaxLength="50" />
+          <Property Name="CG_DATE" Type="datetime" />
+          <Property Name="CG_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="CG_CREATE_DEP" Type="varchar" MaxLength="20" />
+          <Property Name="CG_MODE" Type="varchar" MaxLength="20" />
+          <Property Name="CG_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="CG_SUM" Type="varchar" MaxLength="50" />
+          <Property Name="CG_HAVE_HT" Type="varchar" MaxLength="20" />
+          <Property Name="CG_NOTE1" Type="varchar" MaxLength="200" />
+          <Property Name="CG_NOTE2" Type="varchar" MaxLength="200" />
+          <Property Name="CG_CREATER" Type="varchar" MaxLength="20" />
+          <Property Name="CG_COMPANY" Type="varchar" MaxLength="200" />
+          <Property Name="CG_APPROVAL_DATE" Type="varchar" MaxLength="50" />
+          <Property Name="CG_DETAILS" Type="varchar(max)" />
+          <Property Name="CG_DELIVERY_DATE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_CG_SUPP”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_CG_SUPP">
+          <Key>
+            <PropertyRef Name="CGS_RUN_ID" />
+          </Key>
+          <Property Name="CGS_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="CGS_CURRENT_STEP" Type="varchar" MaxLength="15" />
+          <Property Name="CGS_RECEIVE_DATE" Type="varchar" MaxLength="50" />
+          <Property Name="CGS_CHECK_DATE" Type="varchar" MaxLength="50" />
+          <Property Name="CGS_PAY_DATE" Type="varchar" MaxLength="50" />
+          <Property Name="CGS_NOTE" Type="varchar(max)" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_CH_REL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_CH_REL">
+          <Key>
+            <PropertyRef Name="CG_RUN_ID" />
+            <PropertyRef Name="HT_RUN_ID" />
+          </Key>
+          <Property Name="CG_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="HT_RUN_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_FK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_FK">
+          <Key>
+            <PropertyRef Name="FK_RUN_ID" />
+          </Key>
+          <Property Name="FK_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="FK_TITLE" Type="varchar" MaxLength="500" />
+          <Property Name="FK_SEQ" Type="varchar" MaxLength="50" />
+          <Property Name="FK_DATE" Type="datetime" />
+          <Property Name="FK_CREATE_DEP" Type="varchar" MaxLength="20" />
+          <Property Name="FK_CREATER" Type="varchar" MaxLength="20" />
+          <Property Name="FK_COMPANY" Type="varchar" MaxLength="200" />
+          <Property Name="FK_PAY_DATE" Type="varchar" MaxLength="50" />
+          <Property Name="FK_PAY_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="FK_MONEY_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="FK_TOTAL_SUM" Type="varchar" MaxLength="100" />
+          <Property Name="FK_PAY_SUM" Type="varchar" MaxLength="100" />
+          <Property Name="FK_DETAILS" Type="varchar(max)" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_HT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_HT">
+          <Key>
+            <PropertyRef Name="HT_RUN_ID" />
+          </Key>
+          <Property Name="HT_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="HT_TITLE" Type="varchar(max)" />
+          <Property Name="HT_SEQ" Type="varchar" MaxLength="50" />
+          <Property Name="HT_DATE" Type="datetime" />
+          <Property Name="HT_NAME" Type="varchar(max)" />
+          <Property Name="HT_COMPANY" Type="varchar" MaxLength="500" />
+          <Property Name="HT_CREATE_DEP" Type="varchar" MaxLength="50" />
+          <Property Name="HT_SUM" Type="varchar" MaxLength="200" />
+          <Property Name="HT_MONEY_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="HT_SERIAL_NUM" Type="varchar" MaxLength="50" />
+          <Property Name="HT_CREATER" Type="varchar" MaxLength="20" />
+          <Property Name="HT_APPROVAL_DATE" Type="varchar" MaxLength="50" />
+          <Property Name="HT_VALIDITY_DATE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_HT_SUPP”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_HT_SUPP">
+          <Key>
+            <PropertyRef Name="HTS_RUN_ID" />
+          </Key>
+          <Property Name="HTS_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="HTS_CURRENT_STEP" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_MENU”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_MENU">
+          <Key>
+            <PropertyRef Name="OM_ID" />
+          </Key>
+          <Property Name="OM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OM_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="OM_URL" Type="varchar" MaxLength="100" />
+          <Property Name="OM_NOTE" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_OUR_OM_REL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_OUR_OM_REL">
+          <Key>
+            <PropertyRef Name="RM_OUR_ID" />
+            <PropertyRef Name="RM_OM_ID" />
+          </Key>
+          <Property Name="RM_OUR_ID" Type="int" Nullable="false" />
+          <Property Name="RM_OM_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_PAYMENT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_PAYMENT">
+          <Key>
+            <PropertyRef Name="OP_ID" />
+          </Key>
+          <Property Name="OP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OP_RUN_ID" Type="int" />
+          <Property Name="OP_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="OP_COMPANY_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="OP_TYPE" Type="varchar" MaxLength="100" />
+          <Property Name="OP_DATE" Type="datetime" />
+          <Property Name="OP_SUM" Type="int" />
+          <Property Name="OP_MONEY_TYPE" Type="varchar" MaxLength="15" />
+          <Property Name="OP_NOTE" Type="varchar" MaxLength="500" />
+          <Property Name="OP_CREATER" Type="varchar" MaxLength="20" />
+          <Property Name="OP_RECODETM" Type="datetime" />
+          <Property Name="OP_ISAUDIT" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_PAYMENT_AUDIT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_PAYMENT_AUDIT">
+          <Key>
+            <PropertyRef Name="OPA_OP_ID" />
+          </Key>
+          <Property Name="OPA_OP_ID" Type="int" Nullable="false" />
+          <Property Name="OPA_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="OPA_DATE" Type="datetime" />
+          <Property Name="OPA_NOTE" Type="varchar" MaxLength="500" />
+          <Property Name="OPA_RECORDER" Type="varchar" MaxLength="100" />
+          <Property Name="OPA_RECORDTM" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_PROCESS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_PROCESS">
+          <Key>
+            <PropertyRef Name="OP_RUN_ID" />
+          </Key>
+          <Property Name="OP_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="OP_USER_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="OP_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="OP_STEP" Type="nvarchar" MaxLength="10" />
+          <Property Name="OP_RECIVE_TM" Type="datetime" />
+          <Property Name="OP_DILIVER_TM" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_RECORD”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_RECORD">
+          <Key>
+            <PropertyRef Name="OR_ID" />
+            <PropertyRef Name="OR_NAME" />
+          </Key>
+          <Property Name="OR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OR_NAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="OR_NOTE" Type="varchar" MaxLength="100" />
+          <Property Name="OR_DATE" Type="date" />
+          <Property Name="OR_NOTE2" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_SHIFT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_SHIFT">
+          <Key>
+            <PropertyRef Name="OS_ID" />
+          </Key>
+          <Property Name="OS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OS_RECORD_TM" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_USER”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_USER">
+          <Key>
+            <PropertyRef Name="USR_ID" />
+          </Key>
+          <Property Name="USR_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USR_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="USR_STAFF_NO" Type="int" />
+          <Property Name="USR_LOGIN_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="USR_LOGIN_ID" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_USER_ROLE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_USER_ROLE">
+          <Key>
+            <PropertyRef Name="OUR_ID" />
+          </Key>
+          <Property Name="OUR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OUR_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="OUR_DEP_PERMS" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_USR_OUR_REL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_USR_OUR_REL">
+          <Key>
+            <PropertyRef Name="ROU_OUR_ID" />
+            <PropertyRef Name="ROU_USR_LOGIN_ID" />
+          </Key>
+          <Property Name="ROU_OUR_ID" Type="int" Nullable="false" />
+          <Property Name="ROU_USR_LOGIN_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_YC_REL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_YC_REL">
+          <Key>
+            <PropertyRef Name="YS_RUN_ID" />
+            <PropertyRef Name="CG_RUN_ID" />
+          </Key>
+          <Property Name="YS_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="CG_RUN_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_YS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_YS">
+          <Key>
+            <PropertyRef Name="YS_RUN_ID" />
+          </Key>
+          <Property Name="YS_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="YS_TITLE" Type="varchar" MaxLength="500" />
+          <Property Name="YS_SEQ" Type="varchar" MaxLength="50" />
+          <Property Name="YS_DATE" Type="datetime" />
+          <Property Name="YS_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="YS_SERIAL_NUM" Type="varchar" MaxLength="50" />
+          <Property Name="YS_CREATE_DEP" Type="varchar" MaxLength="20" />
+          <Property Name="YS_ACCEPT_DEP" Type="varchar" MaxLength="20" />
+          <Property Name="YS_SUM" Type="varchar" MaxLength="100" />
+          <Property Name="YS_CREATER" Type="varchar" MaxLength="20" />
+          <Property Name="YS_APPROVAL_DATE" Type="varchar" MaxLength="50" />
+          <Property Name="YS_ACUM_SUM" Type="varchar" MaxLength="100" />
+          <Property Name="YS_TOTAL_SUM" Type="varchar" MaxLength="100" />
+          <Property Name="YS_DETAILS" Type="varchar(max)" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OA.dbo.OA_YS_SUPP”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OA_YS_SUPP">
+          <Key>
+            <PropertyRef Name="YSS_RUN_ID" />
+          </Key>
+          <Property Name="YSS_RUN_ID" Type="int" Nullable="false" />
+          <Property Name="YSS_CURRENT_STEP" Type="varchar" MaxLength="50" />
+          <Property Name="YSS_HAVE_CG" Type="char" MaxLength="1" />
+        </EntityType>
+        <Function Name="OA_GET_MYSQL_INFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="OAModelStoreContainer">
+          <EntitySet Name="OA_AUTHORITY" EntityType="Self.OA_AUTHORITY" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_AUTHORITY].[AU_OUR_ID] AS [AU_OUR_ID], 
+    [OA_AUTHORITY].[AU_OM_ID] AS [AU_OM_ID], 
+    [OA_AUTHORITY].[AU_DEPS] AS [AU_DEPS]
+    FROM [dbo].[OA_AUTHORITY] AS [OA_AUTHORITY]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_BUDGET_TYPE" EntityType="Self.OA_BUDGET_TYPE" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_BUDGET_TYPE].[OBT_ID] AS [OBT_ID], 
+    [OA_BUDGET_TYPE].[OBT_NAME] AS [OBT_NAME], 
+    [OA_BUDGET_TYPE].[OBT_DESCRIPTION] AS [OBT_DESCRIPTION], 
+    [OA_BUDGET_TYPE].[OBT_NUMBER] AS [OBT_NUMBER], 
+    [OA_BUDGET_TYPE].[OBT_DEPART] AS [OBT_DEPART], 
+    [OA_BUDGET_TYPE].[OBT_SUM] AS [OBT_SUM], 
+    [OA_BUDGET_TYPE].[OBT_CREATE_DATE] AS [OBT_CREATE_DATE], 
+    [OA_BUDGET_TYPE].[OBT_NOTE] AS [OBT_NOTE], 
+    [OA_BUDGET_TYPE].[OBT_YEAR] AS [OBT_YEAR], 
+    [OA_BUDGET_TYPE].[OBT_ENABLE] AS [OBT_ENABLE], 
+    [OA_BUDGET_TYPE].[OBT_RECORDER] AS [OBT_RECORDER]
+    FROM [dbo].[OA_BUDGET_TYPE] AS [OA_BUDGET_TYPE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_CG" EntityType="Self.OA_CG" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_CG].[CG_RUN_ID] AS [CG_RUN_ID], 
+    [OA_CG].[CG_TITLE] AS [CG_TITLE], 
+    [OA_CG].[CG_SEQ] AS [CG_SEQ], 
+    [OA_CG].[CG_DATE] AS [CG_DATE], 
+    [OA_CG].[CG_NAME] AS [CG_NAME], 
+    [OA_CG].[CG_CREATE_DEP] AS [CG_CREATE_DEP], 
+    [OA_CG].[CG_MODE] AS [CG_MODE], 
+    [OA_CG].[CG_TYPE] AS [CG_TYPE], 
+    [OA_CG].[CG_SUM] AS [CG_SUM], 
+    [OA_CG].[CG_HAVE_HT] AS [CG_HAVE_HT], 
+    [OA_CG].[CG_NOTE1] AS [CG_NOTE1], 
+    [OA_CG].[CG_NOTE2] AS [CG_NOTE2], 
+    [OA_CG].[CG_CREATER] AS [CG_CREATER], 
+    [OA_CG].[CG_COMPANY] AS [CG_COMPANY], 
+    [OA_CG].[CG_APPROVAL_DATE] AS [CG_APPROVAL_DATE], 
+    [OA_CG].[CG_DETAILS] AS [CG_DETAILS], 
+    [OA_CG].[CG_DELIVERY_DATE] AS [CG_DELIVERY_DATE]
+    FROM [dbo].[OA_CG] AS [OA_CG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_CG_SUPP" EntityType="Self.OA_CG_SUPP" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_CG_SUPP].[CGS_RUN_ID] AS [CGS_RUN_ID], 
+    [OA_CG_SUPP].[CGS_CURRENT_STEP] AS [CGS_CURRENT_STEP], 
+    [OA_CG_SUPP].[CGS_RECEIVE_DATE] AS [CGS_RECEIVE_DATE], 
+    [OA_CG_SUPP].[CGS_CHECK_DATE] AS [CGS_CHECK_DATE], 
+    [OA_CG_SUPP].[CGS_PAY_DATE] AS [CGS_PAY_DATE], 
+    [OA_CG_SUPP].[CGS_NOTE] AS [CGS_NOTE]
+    FROM [dbo].[OA_CG_SUPP] AS [OA_CG_SUPP]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_CH_REL" EntityType="Self.OA_CH_REL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_CH_REL].[CG_RUN_ID] AS [CG_RUN_ID], 
+    [OA_CH_REL].[HT_RUN_ID] AS [HT_RUN_ID]
+    FROM [dbo].[OA_CH_REL] AS [OA_CH_REL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_FK" EntityType="Self.OA_FK" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_FK].[FK_RUN_ID] AS [FK_RUN_ID], 
+    [OA_FK].[FK_TITLE] AS [FK_TITLE], 
+    [OA_FK].[FK_SEQ] AS [FK_SEQ], 
+    [OA_FK].[FK_DATE] AS [FK_DATE], 
+    [OA_FK].[FK_CREATE_DEP] AS [FK_CREATE_DEP], 
+    [OA_FK].[FK_CREATER] AS [FK_CREATER], 
+    [OA_FK].[FK_COMPANY] AS [FK_COMPANY], 
+    [OA_FK].[FK_PAY_DATE] AS [FK_PAY_DATE], 
+    [OA_FK].[FK_PAY_TYPE] AS [FK_PAY_TYPE], 
+    [OA_FK].[FK_MONEY_TYPE] AS [FK_MONEY_TYPE], 
+    [OA_FK].[FK_TOTAL_SUM] AS [FK_TOTAL_SUM], 
+    [OA_FK].[FK_PAY_SUM] AS [FK_PAY_SUM], 
+    [OA_FK].[FK_DETAILS] AS [FK_DETAILS]
+    FROM [dbo].[OA_FK] AS [OA_FK]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_HT" EntityType="Self.OA_HT" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_HT].[HT_RUN_ID] AS [HT_RUN_ID], 
+    [OA_HT].[HT_TITLE] AS [HT_TITLE], 
+    [OA_HT].[HT_SEQ] AS [HT_SEQ], 
+    [OA_HT].[HT_DATE] AS [HT_DATE], 
+    [OA_HT].[HT_NAME] AS [HT_NAME], 
+    [OA_HT].[HT_COMPANY] AS [HT_COMPANY], 
+    [OA_HT].[HT_CREATE_DEP] AS [HT_CREATE_DEP], 
+    [OA_HT].[HT_SUM] AS [HT_SUM], 
+    [OA_HT].[HT_MONEY_TYPE] AS [HT_MONEY_TYPE], 
+    [OA_HT].[HT_SERIAL_NUM] AS [HT_SERIAL_NUM], 
+    [OA_HT].[HT_CREATER] AS [HT_CREATER], 
+    [OA_HT].[HT_APPROVAL_DATE] AS [HT_APPROVAL_DATE], 
+    [OA_HT].[HT_VALIDITY_DATE] AS [HT_VALIDITY_DATE]
+    FROM [dbo].[OA_HT] AS [OA_HT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_HT_SUPP" EntityType="Self.OA_HT_SUPP" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_HT_SUPP].[HTS_RUN_ID] AS [HTS_RUN_ID], 
+    [OA_HT_SUPP].[HTS_CURRENT_STEP] AS [HTS_CURRENT_STEP]
+    FROM [dbo].[OA_HT_SUPP] AS [OA_HT_SUPP]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_MENU" EntityType="Self.OA_MENU" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_MENU].[OM_ID] AS [OM_ID], 
+    [OA_MENU].[OM_NAME] AS [OM_NAME], 
+    [OA_MENU].[OM_URL] AS [OM_URL], 
+    [OA_MENU].[OM_NOTE] AS [OM_NOTE]
+    FROM [dbo].[OA_MENU] AS [OA_MENU]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_OUR_OM_REL" EntityType="Self.OA_OUR_OM_REL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_OUR_OM_REL].[RM_OUR_ID] AS [RM_OUR_ID], 
+    [OA_OUR_OM_REL].[RM_OM_ID] AS [RM_OM_ID]
+    FROM [dbo].[OA_OUR_OM_REL] AS [OA_OUR_OM_REL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_PAYMENT" EntityType="Self.OA_PAYMENT" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_PAYMENT].[OP_ID] AS [OP_ID], 
+    [OA_PAYMENT].[OP_RUN_ID] AS [OP_RUN_ID], 
+    [OA_PAYMENT].[OP_NAME] AS [OP_NAME], 
+    [OA_PAYMENT].[OP_COMPANY_NAME] AS [OP_COMPANY_NAME], 
+    [OA_PAYMENT].[OP_TYPE] AS [OP_TYPE], 
+    [OA_PAYMENT].[OP_DATE] AS [OP_DATE], 
+    [OA_PAYMENT].[OP_SUM] AS [OP_SUM], 
+    [OA_PAYMENT].[OP_MONEY_TYPE] AS [OP_MONEY_TYPE], 
+    [OA_PAYMENT].[OP_NOTE] AS [OP_NOTE], 
+    [OA_PAYMENT].[OP_CREATER] AS [OP_CREATER], 
+    [OA_PAYMENT].[OP_RECODETM] AS [OP_RECODETM], 
+    [OA_PAYMENT].[OP_ISAUDIT] AS [OP_ISAUDIT]
+    FROM [dbo].[OA_PAYMENT] AS [OA_PAYMENT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_PAYMENT_AUDIT" EntityType="Self.OA_PAYMENT_AUDIT" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_PAYMENT_AUDIT].[OPA_OP_ID] AS [OPA_OP_ID], 
+    [OA_PAYMENT_AUDIT].[OPA_TYPE] AS [OPA_TYPE], 
+    [OA_PAYMENT_AUDIT].[OPA_DATE] AS [OPA_DATE], 
+    [OA_PAYMENT_AUDIT].[OPA_NOTE] AS [OPA_NOTE], 
+    [OA_PAYMENT_AUDIT].[OPA_RECORDER] AS [OPA_RECORDER], 
+    [OA_PAYMENT_AUDIT].[OPA_RECORDTM] AS [OPA_RECORDTM]
+    FROM [dbo].[OA_PAYMENT_AUDIT] AS [OA_PAYMENT_AUDIT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_PROCESS" EntityType="Self.OA_PROCESS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_PROCESS].[OP_RUN_ID] AS [OP_RUN_ID], 
+    [OA_PROCESS].[OP_USER_NAME] AS [OP_USER_NAME], 
+    [OA_PROCESS].[OP_STATUS] AS [OP_STATUS], 
+    [OA_PROCESS].[OP_STEP] AS [OP_STEP], 
+    [OA_PROCESS].[OP_RECIVE_TM] AS [OP_RECIVE_TM], 
+    [OA_PROCESS].[OP_DILIVER_TM] AS [OP_DILIVER_TM]
+    FROM [dbo].[OA_PROCESS] AS [OA_PROCESS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_RECORD" EntityType="Self.OA_RECORD" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_RECORD].[OR_ID] AS [OR_ID], 
+    [OA_RECORD].[OR_NAME] AS [OR_NAME], 
+    [OA_RECORD].[OR_NOTE] AS [OR_NOTE], 
+    [OA_RECORD].[OR_DATE] AS [OR_DATE], 
+    [OA_RECORD].[OR_NOTE2] AS [OR_NOTE2]
+    FROM [dbo].[OA_RECORD] AS [OA_RECORD]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_SHIFT" EntityType="Self.OA_SHIFT" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_SHIFT].[OS_ID] AS [OS_ID], 
+    [OA_SHIFT].[OS_RECORD_TM] AS [OS_RECORD_TM]
+    FROM [dbo].[OA_SHIFT] AS [OA_SHIFT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_USER" EntityType="Self.OA_USER" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_USER].[USR_ID] AS [USR_ID], 
+    [OA_USER].[USR_NAME] AS [USR_NAME], 
+    [OA_USER].[USR_STAFF_NO] AS [USR_STAFF_NO], 
+    [OA_USER].[USR_LOGIN_NAME] AS [USR_LOGIN_NAME], 
+    [OA_USER].[USR_LOGIN_ID] AS [USR_LOGIN_ID]
+    FROM [dbo].[OA_USER] AS [OA_USER]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_USER_ROLE" EntityType="Self.OA_USER_ROLE" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_USER_ROLE].[OUR_ID] AS [OUR_ID], 
+    [OA_USER_ROLE].[OUR_NAME] AS [OUR_NAME], 
+    [OA_USER_ROLE].[OUR_DEP_PERMS] AS [OUR_DEP_PERMS]
+    FROM [dbo].[OA_USER_ROLE] AS [OA_USER_ROLE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_USR_OUR_REL" EntityType="Self.OA_USR_OUR_REL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_USR_OUR_REL].[ROU_OUR_ID] AS [ROU_OUR_ID], 
+    [OA_USR_OUR_REL].[ROU_USR_LOGIN_ID] AS [ROU_USR_LOGIN_ID]
+    FROM [dbo].[OA_USR_OUR_REL] AS [OA_USR_OUR_REL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_YC_REL" EntityType="Self.OA_YC_REL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_YC_REL].[YS_RUN_ID] AS [YS_RUN_ID], 
+    [OA_YC_REL].[CG_RUN_ID] AS [CG_RUN_ID]
+    FROM [dbo].[OA_YC_REL] AS [OA_YC_REL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_YS" EntityType="Self.OA_YS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_YS].[YS_RUN_ID] AS [YS_RUN_ID], 
+    [OA_YS].[YS_TITLE] AS [YS_TITLE], 
+    [OA_YS].[YS_SEQ] AS [YS_SEQ], 
+    [OA_YS].[YS_DATE] AS [YS_DATE], 
+    [OA_YS].[YS_NAME] AS [YS_NAME], 
+    [OA_YS].[YS_SERIAL_NUM] AS [YS_SERIAL_NUM], 
+    [OA_YS].[YS_CREATE_DEP] AS [YS_CREATE_DEP], 
+    [OA_YS].[YS_ACCEPT_DEP] AS [YS_ACCEPT_DEP], 
+    [OA_YS].[YS_SUM] AS [YS_SUM], 
+    [OA_YS].[YS_CREATER] AS [YS_CREATER], 
+    [OA_YS].[YS_APPROVAL_DATE] AS [YS_APPROVAL_DATE], 
+    [OA_YS].[YS_ACUM_SUM] AS [YS_ACUM_SUM], 
+    [OA_YS].[YS_TOTAL_SUM] AS [YS_TOTAL_SUM], 
+    [OA_YS].[YS_DETAILS] AS [YS_DETAILS]
+    FROM [dbo].[OA_YS] AS [OA_YS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OA_YS_SUPP" EntityType="Self.OA_YS_SUPP" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OA_YS_SUPP].[YSS_RUN_ID] AS [YSS_RUN_ID], 
+    [OA_YS_SUPP].[YSS_CURRENT_STEP] AS [YSS_CURRENT_STEP], 
+    [OA_YS_SUPP].[YSS_HAVE_CG] AS [YSS_HAVE_CG]
+    FROM [dbo].[OA_YS_SUPP] AS [OA_YS_SUPP]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OA_AUTHORITY">
+          <Key>
+            <PropertyRef Name="AU_OUR_ID" />
+            <PropertyRef Name="AU_OM_ID" />
+          </Key>
+          <Property Name="AU_OUR_ID" Type="Int32" Nullable="false" />
+          <Property Name="AU_OM_ID" Type="Int32" Nullable="false" />
+          <Property Name="AU_DEPS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_BUDGET_TYPE">
+          <Key>
+            <PropertyRef Name="OBT_ID" />
+            <PropertyRef Name="OBT_NUMBER" />
+          </Key>
+          <Property Name="OBT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OBT_DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OBT_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OBT_DEPART" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OBT_SUM" Type="Double" />
+          <Property Name="OBT_CREATE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="OBT_NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OBT_YEAR" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OBT_ENABLE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="OBT_RECORDER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_CG">
+          <Key>
+            <PropertyRef Name="CG_RUN_ID" />
+          </Key>
+          <Property Name="CG_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="CG_TITLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CG_SEQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CG_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CG_CREATE_DEP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CG_MODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CG_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CG_SUM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CG_HAVE_HT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CG_NOTE1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CG_NOTE2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CG_CREATER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CG_COMPANY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CG_APPROVAL_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CG_DETAILS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CG_DELIVERY_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_CG_SUPP">
+          <Key>
+            <PropertyRef Name="CGS_RUN_ID" />
+          </Key>
+          <Property Name="CGS_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="CGS_CURRENT_STEP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CGS_RECEIVE_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CGS_CHECK_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CGS_PAY_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CGS_NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_CH_REL">
+          <Key>
+            <PropertyRef Name="CG_RUN_ID" />
+            <PropertyRef Name="HT_RUN_ID" />
+          </Key>
+          <Property Name="CG_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="HT_RUN_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OA_FK">
+          <Key>
+            <PropertyRef Name="FK_RUN_ID" />
+          </Key>
+          <Property Name="FK_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="FK_TITLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FK_SEQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FK_DATE" Type="DateTime" Precision="3" />
+          <Property Name="FK_CREATE_DEP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FK_CREATER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FK_COMPANY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FK_PAY_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FK_PAY_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FK_MONEY_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FK_TOTAL_SUM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FK_PAY_SUM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FK_DETAILS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_HT">
+          <Key>
+            <PropertyRef Name="HT_RUN_ID" />
+          </Key>
+          <Property Name="HT_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="HT_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HT_SEQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="HT_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HT_COMPANY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HT_CREATE_DEP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HT_SUM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="HT_MONEY_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HT_SERIAL_NUM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HT_CREATER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HT_APPROVAL_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HT_VALIDITY_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_HT_SUPP">
+          <Key>
+            <PropertyRef Name="HTS_RUN_ID" />
+          </Key>
+          <Property Name="HTS_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="HTS_CURRENT_STEP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_MENU">
+          <Key>
+            <PropertyRef Name="OM_ID" />
+          </Key>
+          <Property Name="OM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OM_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OM_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OM_NOTE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_OUR_OM_REL">
+          <Key>
+            <PropertyRef Name="RM_OUR_ID" />
+            <PropertyRef Name="RM_OM_ID" />
+          </Key>
+          <Property Name="RM_OUR_ID" Type="Int32" Nullable="false" />
+          <Property Name="RM_OM_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OA_PAYMENT">
+          <Key>
+            <PropertyRef Name="OP_ID" />
+          </Key>
+          <Property Name="OP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OP_RUN_ID" Type="Int32" />
+          <Property Name="OP_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OP_COMPANY_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OP_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="OP_SUM" Type="Int32" />
+          <Property Name="OP_MONEY_TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OP_NOTE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OP_CREATER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OP_RECODETM" Type="DateTime" Precision="3" />
+          <Property Name="OP_ISAUDIT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_PAYMENT_AUDIT">
+          <Key>
+            <PropertyRef Name="OPA_OP_ID" />
+          </Key>
+          <Property Name="OPA_OP_ID" Type="Int32" Nullable="false" />
+          <Property Name="OPA_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OPA_DATE" Type="DateTime" Precision="3" />
+          <Property Name="OPA_NOTE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OPA_RECORDER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OPA_RECORDTM" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="OA_PROCESS">
+          <Key>
+            <PropertyRef Name="OP_RUN_ID" />
+          </Key>
+          <Property Name="OP_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="OP_USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OP_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OP_STEP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OP_RECIVE_TM" Type="DateTime" Precision="3" />
+          <Property Name="OP_DILIVER_TM" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="OA_RECORD">
+          <Key>
+            <PropertyRef Name="OR_ID" />
+            <PropertyRef Name="OR_NAME" />
+          </Key>
+          <Property Name="OR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OR_NOTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OR_DATE" Type="DateTime" Precision="0" />
+          <Property Name="OR_NOTE2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_SHIFT">
+          <Key>
+            <PropertyRef Name="OS_ID" />
+          </Key>
+          <Property Name="OS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OS_RECORD_TM" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="OA_USER">
+          <Key>
+            <PropertyRef Name="USR_ID" />
+          </Key>
+          <Property Name="USR_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USR_STAFF_NO" Type="Int32" />
+          <Property Name="USR_LOGIN_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USR_LOGIN_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OA_USER_ROLE">
+          <Key>
+            <PropertyRef Name="OUR_ID" />
+          </Key>
+          <Property Name="OUR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OUR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OUR_DEP_PERMS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_USR_OUR_REL">
+          <Key>
+            <PropertyRef Name="ROU_OUR_ID" />
+            <PropertyRef Name="ROU_USR_LOGIN_ID" />
+          </Key>
+          <Property Name="ROU_OUR_ID" Type="Int32" Nullable="false" />
+          <Property Name="ROU_USR_LOGIN_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OA_YC_REL">
+          <Key>
+            <PropertyRef Name="YS_RUN_ID" />
+            <PropertyRef Name="CG_RUN_ID" />
+          </Key>
+          <Property Name="YS_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="CG_RUN_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OA_YS">
+          <Key>
+            <PropertyRef Name="YS_RUN_ID" />
+          </Key>
+          <Property Name="YS_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="YS_TITLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="YS_SEQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YS_DATE" Type="DateTime" Precision="3" />
+          <Property Name="YS_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="YS_SERIAL_NUM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YS_CREATE_DEP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="YS_ACCEPT_DEP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="YS_SUM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="YS_CREATER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="YS_APPROVAL_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YS_ACUM_SUM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="YS_TOTAL_SUM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="YS_DETAILS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OA_YS_SUPP">
+          <Key>
+            <PropertyRef Name="YSS_RUN_ID" />
+          </Key>
+          <Property Name="YSS_RUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="YSS_CURRENT_STEP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YSS_HAVE_CG" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="OAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OA_AUTHORITY" EntityType="Self.OA_AUTHORITY" />
+          <EntitySet Name="OA_BUDGET_TYPE" EntityType="Self.OA_BUDGET_TYPE" />
+          <EntitySet Name="OA_CG" EntityType="Self.OA_CG" />
+          <EntitySet Name="OA_CG_SUPP" EntityType="Self.OA_CG_SUPP" />
+          <EntitySet Name="OA_CH_REL" EntityType="Self.OA_CH_REL" />
+          <EntitySet Name="OA_FK" EntityType="Self.OA_FK" />
+          <EntitySet Name="OA_HT" EntityType="Self.OA_HT" />
+          <EntitySet Name="OA_HT_SUPP" EntityType="Self.OA_HT_SUPP" />
+          <EntitySet Name="OA_MENU" EntityType="Self.OA_MENU" />
+          <EntitySet Name="OA_OUR_OM_REL" EntityType="Self.OA_OUR_OM_REL" />
+          <EntitySet Name="OA_PAYMENT" EntityType="Self.OA_PAYMENT" />
+          <EntitySet Name="OA_PAYMENT_AUDIT" EntityType="Self.OA_PAYMENT_AUDIT" />
+          <EntitySet Name="OA_PROCESS" EntityType="Self.OA_PROCESS" />
+          <EntitySet Name="OA_RECORD" EntityType="Self.OA_RECORD" />
+          <EntitySet Name="OA_SHIFT" EntityType="Self.OA_SHIFT" />
+          <EntitySet Name="OA_USER" EntityType="Self.OA_USER" />
+          <EntitySet Name="OA_USER_ROLE" EntityType="Self.OA_USER_ROLE" />
+          <EntitySet Name="OA_USR_OUR_REL" EntityType="Self.OA_USR_OUR_REL" />
+          <EntitySet Name="OA_YC_REL" EntityType="Self.OA_YC_REL" />
+          <EntitySet Name="OA_YS" EntityType="Self.OA_YS" />
+          <EntitySet Name="OA_YS_SUPP" EntityType="Self.OA_YS_SUPP" />
+          <FunctionImport Name="OA_GET_MYSQL_INFO" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OAModelStoreContainer" CdmEntityContainer="OAEntities">
+          <EntitySetMapping Name="OA_AUTHORITY">
+            <EntityTypeMapping TypeName="OAModel.OA_AUTHORITY">
+              <MappingFragment StoreEntitySet="OA_AUTHORITY">
+                <ScalarProperty Name="AU_OUR_ID" ColumnName="AU_OUR_ID" />
+                <ScalarProperty Name="AU_OM_ID" ColumnName="AU_OM_ID" />
+                <ScalarProperty Name="AU_DEPS" ColumnName="AU_DEPS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_BUDGET_TYPE">
+            <EntityTypeMapping TypeName="OAModel.OA_BUDGET_TYPE">
+              <MappingFragment StoreEntitySet="OA_BUDGET_TYPE">
+                <ScalarProperty Name="OBT_ID" ColumnName="OBT_ID" />
+                <ScalarProperty Name="OBT_NAME" ColumnName="OBT_NAME" />
+                <ScalarProperty Name="OBT_DESCRIPTION" ColumnName="OBT_DESCRIPTION" />
+                <ScalarProperty Name="OBT_NUMBER" ColumnName="OBT_NUMBER" />
+                <ScalarProperty Name="OBT_DEPART" ColumnName="OBT_DEPART" />
+                <ScalarProperty Name="OBT_SUM" ColumnName="OBT_SUM" />
+                <ScalarProperty Name="OBT_CREATE_DATE" ColumnName="OBT_CREATE_DATE" />
+                <ScalarProperty Name="OBT_NOTE" ColumnName="OBT_NOTE" />
+                <ScalarProperty Name="OBT_YEAR" ColumnName="OBT_YEAR" />
+                <ScalarProperty Name="OBT_ENABLE" ColumnName="OBT_ENABLE" />
+                <ScalarProperty Name="OBT_RECORDER" ColumnName="OBT_RECORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_CG">
+            <EntityTypeMapping TypeName="OAModel.OA_CG">
+              <MappingFragment StoreEntitySet="OA_CG">
+                <ScalarProperty Name="CG_RUN_ID" ColumnName="CG_RUN_ID" />
+                <ScalarProperty Name="CG_TITLE" ColumnName="CG_TITLE" />
+                <ScalarProperty Name="CG_SEQ" ColumnName="CG_SEQ" />
+                <ScalarProperty Name="CG_DATE" ColumnName="CG_DATE" />
+                <ScalarProperty Name="CG_NAME" ColumnName="CG_NAME" />
+                <ScalarProperty Name="CG_CREATE_DEP" ColumnName="CG_CREATE_DEP" />
+                <ScalarProperty Name="CG_MODE" ColumnName="CG_MODE" />
+                <ScalarProperty Name="CG_TYPE" ColumnName="CG_TYPE" />
+                <ScalarProperty Name="CG_SUM" ColumnName="CG_SUM" />
+                <ScalarProperty Name="CG_HAVE_HT" ColumnName="CG_HAVE_HT" />
+                <ScalarProperty Name="CG_NOTE1" ColumnName="CG_NOTE1" />
+                <ScalarProperty Name="CG_NOTE2" ColumnName="CG_NOTE2" />
+                <ScalarProperty Name="CG_CREATER" ColumnName="CG_CREATER" />
+                <ScalarProperty Name="CG_COMPANY" ColumnName="CG_COMPANY" />
+                <ScalarProperty Name="CG_APPROVAL_DATE" ColumnName="CG_APPROVAL_DATE" />
+                <ScalarProperty Name="CG_DETAILS" ColumnName="CG_DETAILS" />
+                <ScalarProperty Name="CG_DELIVERY_DATE" ColumnName="CG_DELIVERY_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_CG_SUPP">
+            <EntityTypeMapping TypeName="OAModel.OA_CG_SUPP">
+              <MappingFragment StoreEntitySet="OA_CG_SUPP">
+                <ScalarProperty Name="CGS_RUN_ID" ColumnName="CGS_RUN_ID" />
+                <ScalarProperty Name="CGS_CURRENT_STEP" ColumnName="CGS_CURRENT_STEP" />
+                <ScalarProperty Name="CGS_RECEIVE_DATE" ColumnName="CGS_RECEIVE_DATE" />
+                <ScalarProperty Name="CGS_CHECK_DATE" ColumnName="CGS_CHECK_DATE" />
+                <ScalarProperty Name="CGS_PAY_DATE" ColumnName="CGS_PAY_DATE" />
+                <ScalarProperty Name="CGS_NOTE" ColumnName="CGS_NOTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_CH_REL">
+            <EntityTypeMapping TypeName="OAModel.OA_CH_REL">
+              <MappingFragment StoreEntitySet="OA_CH_REL">
+                <ScalarProperty Name="CG_RUN_ID" ColumnName="CG_RUN_ID" />
+                <ScalarProperty Name="HT_RUN_ID" ColumnName="HT_RUN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_FK">
+            <EntityTypeMapping TypeName="OAModel.OA_FK">
+              <MappingFragment StoreEntitySet="OA_FK">
+                <ScalarProperty Name="FK_RUN_ID" ColumnName="FK_RUN_ID" />
+                <ScalarProperty Name="FK_TITLE" ColumnName="FK_TITLE" />
+                <ScalarProperty Name="FK_SEQ" ColumnName="FK_SEQ" />
+                <ScalarProperty Name="FK_DATE" ColumnName="FK_DATE" />
+                <ScalarProperty Name="FK_CREATE_DEP" ColumnName="FK_CREATE_DEP" />
+                <ScalarProperty Name="FK_CREATER" ColumnName="FK_CREATER" />
+                <ScalarProperty Name="FK_COMPANY" ColumnName="FK_COMPANY" />
+                <ScalarProperty Name="FK_PAY_DATE" ColumnName="FK_PAY_DATE" />
+                <ScalarProperty Name="FK_PAY_TYPE" ColumnName="FK_PAY_TYPE" />
+                <ScalarProperty Name="FK_MONEY_TYPE" ColumnName="FK_MONEY_TYPE" />
+                <ScalarProperty Name="FK_TOTAL_SUM" ColumnName="FK_TOTAL_SUM" />
+                <ScalarProperty Name="FK_PAY_SUM" ColumnName="FK_PAY_SUM" />
+                <ScalarProperty Name="FK_DETAILS" ColumnName="FK_DETAILS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_HT">
+            <EntityTypeMapping TypeName="OAModel.OA_HT">
+              <MappingFragment StoreEntitySet="OA_HT">
+                <ScalarProperty Name="HT_RUN_ID" ColumnName="HT_RUN_ID" />
+                <ScalarProperty Name="HT_TITLE" ColumnName="HT_TITLE" />
+                <ScalarProperty Name="HT_SEQ" ColumnName="HT_SEQ" />
+                <ScalarProperty Name="HT_DATE" ColumnName="HT_DATE" />
+                <ScalarProperty Name="HT_NAME" ColumnName="HT_NAME" />
+                <ScalarProperty Name="HT_COMPANY" ColumnName="HT_COMPANY" />
+                <ScalarProperty Name="HT_CREATE_DEP" ColumnName="HT_CREATE_DEP" />
+                <ScalarProperty Name="HT_SUM" ColumnName="HT_SUM" />
+                <ScalarProperty Name="HT_MONEY_TYPE" ColumnName="HT_MONEY_TYPE" />
+                <ScalarProperty Name="HT_SERIAL_NUM" ColumnName="HT_SERIAL_NUM" />
+                <ScalarProperty Name="HT_CREATER" ColumnName="HT_CREATER" />
+                <ScalarProperty Name="HT_APPROVAL_DATE" ColumnName="HT_APPROVAL_DATE" />
+                <ScalarProperty Name="HT_VALIDITY_DATE" ColumnName="HT_VALIDITY_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_HT_SUPP">
+            <EntityTypeMapping TypeName="OAModel.OA_HT_SUPP">
+              <MappingFragment StoreEntitySet="OA_HT_SUPP">
+                <ScalarProperty Name="HTS_RUN_ID" ColumnName="HTS_RUN_ID" />
+                <ScalarProperty Name="HTS_CURRENT_STEP" ColumnName="HTS_CURRENT_STEP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_MENU">
+            <EntityTypeMapping TypeName="OAModel.OA_MENU">
+              <MappingFragment StoreEntitySet="OA_MENU">
+                <ScalarProperty Name="OM_ID" ColumnName="OM_ID" />
+                <ScalarProperty Name="OM_NAME" ColumnName="OM_NAME" />
+                <ScalarProperty Name="OM_URL" ColumnName="OM_URL" />
+                <ScalarProperty Name="OM_NOTE" ColumnName="OM_NOTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_OUR_OM_REL">
+            <EntityTypeMapping TypeName="OAModel.OA_OUR_OM_REL">
+              <MappingFragment StoreEntitySet="OA_OUR_OM_REL">
+                <ScalarProperty Name="RM_OUR_ID" ColumnName="RM_OUR_ID" />
+                <ScalarProperty Name="RM_OM_ID" ColumnName="RM_OM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_PAYMENT">
+            <EntityTypeMapping TypeName="OAModel.OA_PAYMENT">
+              <MappingFragment StoreEntitySet="OA_PAYMENT">
+                <ScalarProperty Name="OP_ID" ColumnName="OP_ID" />
+                <ScalarProperty Name="OP_RUN_ID" ColumnName="OP_RUN_ID" />
+                <ScalarProperty Name="OP_NAME" ColumnName="OP_NAME" />
+                <ScalarProperty Name="OP_COMPANY_NAME" ColumnName="OP_COMPANY_NAME" />
+                <ScalarProperty Name="OP_TYPE" ColumnName="OP_TYPE" />
+                <ScalarProperty Name="OP_DATE" ColumnName="OP_DATE" />
+                <ScalarProperty Name="OP_SUM" ColumnName="OP_SUM" />
+                <ScalarProperty Name="OP_MONEY_TYPE" ColumnName="OP_MONEY_TYPE" />
+                <ScalarProperty Name="OP_NOTE" ColumnName="OP_NOTE" />
+                <ScalarProperty Name="OP_CREATER" ColumnName="OP_CREATER" />
+                <ScalarProperty Name="OP_RECODETM" ColumnName="OP_RECODETM" />
+                <ScalarProperty Name="OP_ISAUDIT" ColumnName="OP_ISAUDIT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_PAYMENT_AUDIT">
+            <EntityTypeMapping TypeName="OAModel.OA_PAYMENT_AUDIT">
+              <MappingFragment StoreEntitySet="OA_PAYMENT_AUDIT">
+                <ScalarProperty Name="OPA_OP_ID" ColumnName="OPA_OP_ID" />
+                <ScalarProperty Name="OPA_TYPE" ColumnName="OPA_TYPE" />
+                <ScalarProperty Name="OPA_DATE" ColumnName="OPA_DATE" />
+                <ScalarProperty Name="OPA_NOTE" ColumnName="OPA_NOTE" />
+                <ScalarProperty Name="OPA_RECORDER" ColumnName="OPA_RECORDER" />
+                <ScalarProperty Name="OPA_RECORDTM" ColumnName="OPA_RECORDTM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_PROCESS">
+            <EntityTypeMapping TypeName="OAModel.OA_PROCESS">
+              <MappingFragment StoreEntitySet="OA_PROCESS">
+                <ScalarProperty Name="OP_RUN_ID" ColumnName="OP_RUN_ID" />
+                <ScalarProperty Name="OP_USER_NAME" ColumnName="OP_USER_NAME" />
+                <ScalarProperty Name="OP_STATUS" ColumnName="OP_STATUS" />
+                <ScalarProperty Name="OP_STEP" ColumnName="OP_STEP" />
+                <ScalarProperty Name="OP_RECIVE_TM" ColumnName="OP_RECIVE_TM" />
+                <ScalarProperty Name="OP_DILIVER_TM" ColumnName="OP_DILIVER_TM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_RECORD">
+            <EntityTypeMapping TypeName="OAModel.OA_RECORD">
+              <MappingFragment StoreEntitySet="OA_RECORD">
+                <ScalarProperty Name="OR_ID" ColumnName="OR_ID" />
+                <ScalarProperty Name="OR_NAME" ColumnName="OR_NAME" />
+                <ScalarProperty Name="OR_NOTE" ColumnName="OR_NOTE" />
+                <ScalarProperty Name="OR_DATE" ColumnName="OR_DATE" />
+                <ScalarProperty Name="OR_NOTE2" ColumnName="OR_NOTE2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_SHIFT">
+            <EntityTypeMapping TypeName="OAModel.OA_SHIFT">
+              <MappingFragment StoreEntitySet="OA_SHIFT">
+                <ScalarProperty Name="OS_ID" ColumnName="OS_ID" />
+                <ScalarProperty Name="OS_RECORD_TM" ColumnName="OS_RECORD_TM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_USER">
+            <EntityTypeMapping TypeName="OAModel.OA_USER">
+              <MappingFragment StoreEntitySet="OA_USER">
+                <ScalarProperty Name="USR_ID" ColumnName="USR_ID" />
+                <ScalarProperty Name="USR_NAME" ColumnName="USR_NAME" />
+                <ScalarProperty Name="USR_STAFF_NO" ColumnName="USR_STAFF_NO" />
+                <ScalarProperty Name="USR_LOGIN_NAME" ColumnName="USR_LOGIN_NAME" />
+                <ScalarProperty Name="USR_LOGIN_ID" ColumnName="USR_LOGIN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_USER_ROLE">
+            <EntityTypeMapping TypeName="OAModel.OA_USER_ROLE">
+              <MappingFragment StoreEntitySet="OA_USER_ROLE">
+                <ScalarProperty Name="OUR_ID" ColumnName="OUR_ID" />
+                <ScalarProperty Name="OUR_NAME" ColumnName="OUR_NAME" />
+                <ScalarProperty Name="OUR_DEP_PERMS" ColumnName="OUR_DEP_PERMS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_USR_OUR_REL">
+            <EntityTypeMapping TypeName="OAModel.OA_USR_OUR_REL">
+              <MappingFragment StoreEntitySet="OA_USR_OUR_REL">
+                <ScalarProperty Name="ROU_OUR_ID" ColumnName="ROU_OUR_ID" />
+                <ScalarProperty Name="ROU_USR_LOGIN_ID" ColumnName="ROU_USR_LOGIN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_YC_REL">
+            <EntityTypeMapping TypeName="OAModel.OA_YC_REL">
+              <MappingFragment StoreEntitySet="OA_YC_REL">
+                <ScalarProperty Name="YS_RUN_ID" ColumnName="YS_RUN_ID" />
+                <ScalarProperty Name="CG_RUN_ID" ColumnName="CG_RUN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_YS">
+            <EntityTypeMapping TypeName="OAModel.OA_YS">
+              <MappingFragment StoreEntitySet="OA_YS">
+                <ScalarProperty Name="YS_RUN_ID" ColumnName="YS_RUN_ID" />
+                <ScalarProperty Name="YS_TITLE" ColumnName="YS_TITLE" />
+                <ScalarProperty Name="YS_SEQ" ColumnName="YS_SEQ" />
+                <ScalarProperty Name="YS_DATE" ColumnName="YS_DATE" />
+                <ScalarProperty Name="YS_NAME" ColumnName="YS_NAME" />
+                <ScalarProperty Name="YS_SERIAL_NUM" ColumnName="YS_SERIAL_NUM" />
+                <ScalarProperty Name="YS_CREATE_DEP" ColumnName="YS_CREATE_DEP" />
+                <ScalarProperty Name="YS_ACCEPT_DEP" ColumnName="YS_ACCEPT_DEP" />
+                <ScalarProperty Name="YS_SUM" ColumnName="YS_SUM" />
+                <ScalarProperty Name="YS_CREATER" ColumnName="YS_CREATER" />
+                <ScalarProperty Name="YS_APPROVAL_DATE" ColumnName="YS_APPROVAL_DATE" />
+                <ScalarProperty Name="YS_ACUM_SUM" ColumnName="YS_ACUM_SUM" />
+                <ScalarProperty Name="YS_TOTAL_SUM" ColumnName="YS_TOTAL_SUM" />
+                <ScalarProperty Name="YS_DETAILS" ColumnName="YS_DETAILS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_YS_SUPP">
+            <EntityTypeMapping TypeName="OAModel.OA_YS_SUPP">
+              <MappingFragment StoreEntitySet="OA_YS_SUPP">
+                <ScalarProperty Name="YSS_RUN_ID" ColumnName="YSS_RUN_ID" />
+                <ScalarProperty Name="YSS_CURRENT_STEP" ColumnName="YSS_CURRENT_STEP" />
+                <ScalarProperty Name="YSS_HAVE_CG" ColumnName="YSS_HAVE_CG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="OA_GET_MYSQL_INFO" FunctionName="OAModel.Store.OA_GET_MYSQL_INFO" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

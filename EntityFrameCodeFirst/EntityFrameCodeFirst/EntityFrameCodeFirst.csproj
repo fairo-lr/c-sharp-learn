@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78379DC9-9FC1-41D7-8E46-4991722DD2DE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EntityFrameCodeFirst</RootNamespace>
+    <AssemblyName>EntityFrameCodeFirst</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Busy_Bay.cs" />
+    <Compile Include="Busy_Information.cs" />
+    <Compile Include="BUSY_MACHINE_TIME.cs" />
+    <Compile Include="Busy_Vessel_Plan.cs" />
+    <Compile Include="Busy_Vessel_Plan_vw.cs" />
+    <Compile Include="Busy_Vessel_Ship.cs" />
+    <Compile Include="Busy_Vessel_Ship_VW.cs" />
+    <Compile Include="Busy_Working_Type.cs" />
+    <Compile Include="Busy_Working_Type_Vw.cs" />
+    <Compile Include="Busy_yard_main_new.cs" />
+    <Compile Include="CERTIFICATE_ORGAN.cs" />
+    <Compile Include="COMPANY_PERSON_TRAINING_VW.cs" />
+    <Compile Include="COMPANY_TRAINING.cs" />
+    <Compile Include="Control.cs" />
+    <Compile Include="gjgw_hangcichaxun.cs" />
+    <Compile Include="MACHINE_BREAKDOWNS.cs" />
+    <Compile Include="offWorkPatrol.cs" />
+    <Compile Include="offWorkPatrol_Result.cs" />
+    <Compile Include="PERSON_CERTIFICATE.cs" />
+    <Compile Include="PERSON_CERTIFICATE_VW.cs" />
+    <Compile Include="PERSON_TRAINING.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PS_STACK_PLANS.cs" />
+    <Compile Include="PS_STACK_PLAN_AREAS.cs" />
+    <Compile Include="ps_vessel_occurences.cs" />
+    <Compile Include="SAFETY_ACCIDENT.cs" />
+    <Compile Include="SAFETY_ACCIDENT_REPORT.cs" />
+    <Compile Include="SAFETY_ACCIDENT_STAFF.cs" />
+    <Compile Include="safety_accident_vw.cs" />
+    <Compile Include="SAFETY_BREAKRULE.cs" />
+    <Compile Include="safety_breakrule_vw.cs" />
+    <Compile Include="SAFETY_CLAIM_REPORT.cs" />
+    <Compile Include="SAFETY_COMPENSATION_REPORT.cs" />
+    <Compile Include="SAFETY_DNGLIST.cs" />
+    <Compile Include="SAFETY_DNGSENDTM.cs" />
+    <Compile Include="SAFETY_INFORMATION.cs" />
+    <Compile Include="SAFETY_NOTICE.cs" />
+    <Compile Include="SAFETY_PATROL_FILES.cs" />
+    <Compile Include="SAFETY_PATROL_RECORD.cs" />
+    <Compile Include="SAFETY_SAFECHECK.cs" />
+    <Compile Include="SAFETY_SCOREMANAGERULE.cs" />
+    <Compile Include="SAFETY_SITUATION.cs" />
+    <Compile Include="SAFETY_SITUATIONDETAIL.cs" />
+    <Compile Include="SAFETY_SITUATIONDETAIL_PICTURE.cs" />
+    <Compile Include="SAFETY_SITUATIONDETAIL_RESULT.cs" />
+    <Compile Include="SAFETY_SITUATIONTYPE.cs" />
+    <Compile Include="SAFETY_SITUATIONTYPE_DETAIL.cs" />
+    <Compile Include="SAFETY_SUPERVISION.cs" />
+    <Compile Include="SAFETY_SUPERVISION_JOB.cs" />
+    <Compile Include="SAFETY_SUPERVISION_PROJECT.cs" />
+    <Compile Include="SAFETY_VESSEL.cs" />
+    <Compile Include="SA_PERSON_INFO_VW.cs" />
+    <Compile Include="SHIFT_DUTY.cs" />
+    <Compile Include="SHIFT_ENGINEERS.cs" />
+    <Compile Include="SHIFT_INFORMATION.cs" />
+    <Compile Include="SHIFT_MACHINE_WORK.cs" />
+    <Compile Include="SHIFT_PLANE.cs" />
+    <Compile Include="SHIFT_VESSEL.cs" />
+    <Compile Include="SHIFT_WORKNOKPI.cs" />
+    <Compile Include="SHIFT_WORKS.cs" />
+    <Compile Include="SHIFT_YARDBUFF.cs" />
+    <Compile Include="situationReport_vw.cs" />
+    <Compile Include="sysdiagram.cs" />
+    <Compile Include="ThroughputInReport.cs" />
+    <Compile Include="ThroughputOutReport.cs" />
+    <Compile Include="ThroughputReport.cs" />
+    <Compile Include="TRAINING_MODEL.cs" />
+    <Compile Include="TransferDataSet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
