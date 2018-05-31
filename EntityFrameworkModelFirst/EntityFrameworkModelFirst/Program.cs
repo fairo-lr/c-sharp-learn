@@ -10,6 +10,7 @@ namespace EntityFrameworkModelFirst
     {
         static void Main(string[] args)
         {
+            //主要用于还没有数据库的情况
         }
     }
 }
