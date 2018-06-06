@@ -10,11 +10,31 @@ namespace Inheritance
     {
         static void Main(string[] args)
         {
-            One one = new One();
+            //One one = new One();
+            Dog dog = new Dog();
+            dog.Age = 10;
+            dog.Bite();
+            dog.GetAge();
+            dog.BiteMan();
+            //构造实例化: 先调用父类构造函数,在调用子类的构造函数
+
+            Dog dog2 = new Dog(10);
+            //默认先调用父类的默认构造函数, 在调用子类的特定构造函数
+
+            Animal dog3= new Dog();
+            dog3.Bite();//调用子类
+
+            dog3.BiteMan();//调用父类
+            ((Dog)dog3).BiteMan();//调用父类
+
+            Console.ReadLine();
         }
     }
 
-    class Animal {
+    class Animal
+    {
+        public Animal() { Console.WriteLine("Animal constructor"); }
+        public Animal(int age) { Console.WriteLine("Animal(int)  constructor"); }
         public int Age { get; set; }
         public virtual void Bite()
         {
@@ -23,7 +43,7 @@ namespace Inheritance
 
         public virtual void GetAge()
         {
-            Console.WriteLine (Age);
+            Console.WriteLine(Age);
         }
 
         public void BiteMan()
@@ -32,11 +52,20 @@ namespace Inheritance
         }
     }
 
-    class Dog:Animal
+    sealed class Dog : Animal
     {
+        public Dog() { Console.WriteLine("Dog constructor"); }
+        //如果设置此构造函数, 则会调用父类的特定构造函数, 在调用子类的特定构造函数
+        //public Dog(int age):base(age) { Console.WriteLine("Dog(int)  constructor"); }
+
+        //如果设置此构造函数, 则会调用父类的默认构造函数,  在调用子类的默认构造函数, 在调用子类的特定构造函数
+        //public Dog(int age):this() { Console.WriteLine("Dog(int)  constructor"); }
+
+        public Dog(int age) { Console.WriteLine("Dog(int)  constructor"); }
+
         public override void Bite()
         {
-            Console.Write("Dog Bite");
+            Console.WriteLine("Dog Bite");
         }
 
         public new void BiteMan()
@@ -45,7 +74,8 @@ namespace Inheritance
         }
     }
 
+    //class LittleDog : Dog { }
     class Human { }
-    class Man:Human { }
+    class Man : Human { }
     class One : Man { }
 }
