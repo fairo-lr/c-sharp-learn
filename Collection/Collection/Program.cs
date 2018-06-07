@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,30 @@ namespace Collection
                 //初始化长度不固定
                 ss[i] = new byte[i + 3];
             }
+
+            // ArrayList & List
+            ArrayList al = new ArrayList();
+            al.Add(5);
+            al.Add("jikexueyuan");
+            List<int> li = new List<int>();
+            li.AddRange(new int[] { 1, 2, 3 });
+
+            // Hashtable & Dictionary
+            Hashtable ht = new Hashtable();
+            ht.Add(1, 2);
+            ht.Add("2", "2");
+            Console.WriteLine(ht["2"]);
+            Console.WriteLine(ht[1]); 
+
+            Dictionary<string, string> dt = new Dictionary<string, string>();
+            //dt.Add(100, 101);
+            dt.Add("100", "101");
+            Console.WriteLine(dt["100"]);
+
+            //排序使用
+            SortedList<int, int> st = new SortedList<int, int>();
+
+            //Stack,Queue
 
             Console.ReadLine();
         }
