@@ -1,4 +1,4 @@
-#c#值类型
+# c#值类型
 值类型就是直接存储在内存的栈上面
 引用类型是在内存的栈上面存储一个引用, 在堆上面存储值
 系统的内建类型,比如
@@ -9,7 +9,7 @@
 主要继承于 system.valuetype , system.object
 int的默认值是0
 
-#c#引用类型
+# c#引用类型
 内建引用: object, string, dynamic
 其他引用: class, interface
 - object
@@ -21,7 +21,7 @@ int的默认值是0
 - interface 
 	- 只能包含属性, 方法, 索引, 事件
 	- 命名一般以I开头
-##abstract class & interface 的区别
+## abstract class & interface 的区别
 - abstract class 不能实例化
 - 类只能继承一个,但接口可以继承多个
 - 接口内的 都要实现
@@ -29,8 +29,8 @@ int的默认值是0
 - 接口更像是规则, 所以定义的内容都要实现
 
 
-#c#集合类型
-##数组
+# c#集合类型
+## 数组
 属于引用类型, 继承于system.array
 特点: 长度固定, 类型固定, 根据index排列.
 - 创建一个int 数组
@@ -43,7 +43,7 @@ int的默认值是0
 也是通过index来访问
 - ArrayList 的特点是不限制类型(都是object类型), 同一个变量内可以插入各种类型的成员;
 - List 会限制成员类型, 更加安全;
-##Hashtable & Dictionary
+## Hashtable & Dictionary
 通过key来访问 (key, value)
 `key一样怎么办?`
 - 创建一个Hashtable: hashtable 也是没有限制类型(都是object类型), 数据不安全
@@ -54,7 +54,7 @@ int的默认值是0
 - queue 先进先出
 
 
-#c#异常处理机制
+# c#异常处理机制
 ExceptionHandle
 
 - 举例抛出异常 /0
@@ -66,7 +66,7 @@ ExceptionHandle
 
 
 
-#c#继承
+# c#继承
 新类希望重用旧类, 又有一些方法属性需要创建, 就需要使用继承
 - 继承也需要满足语义的合理性, 比如动物和猫狗可以创建继承关系, 但动物和桌子就违反了语义合理性
 <b>c#中不能进行多重继承</b>
@@ -76,26 +76,26 @@ ExceptionHandle
 - sealed 类不能被继承
 
 
-#c#封装
+# c#封装
 封装: 把一些内容包装在一起, 控制访问权限
 注意assbemly 和 namespace 的区别
 
-#c#多态 
+# c#多态 
 是指一个形态， 能实现多个功能
 
-##静态多态
+## 静态多态
 编译之后会实现
-###重载(overload)
+### 重载(overload)
 - 方法重载
 实现方式： 参数的个数，参数的类型
 - 运算符的重载
 
-##动态多态
+## 动态多态
 运行时会实现 
-###重写(override)
+### 重写(override)
 比如在类中实现对ToString()的重写
 
-#c# 事件
+# c# 事件
 event
 通过用户动作触发一些情况， 被称作事件
 比如button click
@@ -115,7 +115,7 @@ EventHandler
 2. 
 
 
-#c# 索引器
+# c# 索引器
 让类可以像数组一样访问每个属性
 
 public string this[int index]{};
@@ -123,7 +123,7 @@ public string this[int index]{};
 - 代码的强壮性考虑的方面
 1. 参数的取值范围
 
-#C# 泛型
+# C# 泛型
 generic
 以T作为类型通称的操作
 
@@ -143,7 +143,7 @@ generic
 泛型在委托 Delegate 上的实现
 `delegate T name<T>(T temp)`
 
-#c# attribute
+# c# attribute
 为程序添加一些附加的信息
 用`[]`来表示
 
@@ -156,15 +156,15 @@ generic
 属性AttributeUsage 
 获取Attribute 中的信息
 
-#C# 反射 - 暂时先不看了 
+# C# 反射 - 暂时先不看了 
 reflection
 system.type
 - 抽象类无法实例化
 
-#c#匿名函数
+# c#匿名函数
 没有函数名称，直接嵌套进程序里面
 
-##匿名函数和委托的发展史
+## 匿名函数和委托的发展史
 匿名方法:
 delegate(参数){
 //函数体
