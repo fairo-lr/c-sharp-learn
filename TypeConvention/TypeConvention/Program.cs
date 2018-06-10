@@ -45,7 +45,7 @@ namespace TypeConvention
             Console.WriteLine(inullable.HasValue);
             Console.WriteLine(inullable.GetValueOrDefault());
 
-            // ??的用法
+            // ?? 的用法
             int iii = inullable ?? 500;
             Console.ReadLine();
         }
