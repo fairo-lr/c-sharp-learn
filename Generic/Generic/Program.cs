@@ -16,8 +16,47 @@ namespace Generic
                 ma.SetItem(i, i + 1);
             }
 
+            // 多重泛型
+            MyGenericArray<int, string> ma2 = new MyGenericArray<int, string>();
+
+            // 多重带限制的泛型
+            MyGenericArray2<int, string> ma3 = new MyGenericArray2<int, string>();
+
+            // 多重带限制的泛型
+            //MyGenericArray2<string, string> m3 = new MyGenericArray2<string, string>();
+
+            // 泛型的继承
+            SonMyGenericArray<int> sma = new SonMyGenericArray<int>(3);
+
+            // 泛型的继承也可以指定类型
+            SonMyGenericArray sma2 = new SonMyGenericArray(3);
+
+            // 泛型在方法上的实现
+            // 泛型类 和 泛型方法的数据类型可以不一致
+            ma.SetItem<char>(5, 'c');
+            ma.SetItem<string>(5, "c");
+
+            // 非泛型类的泛型方法
+            int a = 10; int b = 20;
+            char c = 'i'; char d = 'u';
+            Console.WriteLine("a:{0} b:{1}", a, b);
+            Console.WriteLine("c:{0} d:{1}", c, d);
+            Swap<int>(ref a, ref b);
+            Swap<char>(ref c, ref d);
+            Console.WriteLine("a:{0} b:{1}", a, b);
+            Console.WriteLine("c:{0} d:{1}", c, d);
+
             Console.ReadLine();
         }
+
+        private static void Swap<T>(ref T a, ref T b)
+        {
+            T c;
+            c = a;
+            a = b;
+            b = c;
+        }
+
     }
 
     class MyGenericArray<T>
@@ -43,6 +82,36 @@ namespace Generic
         {
             array[index] = value;
         }
+        public void SetItem<X>(int index, X value)
+        {
+        }
 
+    }
+
+    class MyGenericArray<T, K>
+    {
+    }
+
+    // 多重带限制的泛型
+    // struct 代表必须是值类型, 除此之外还可以是引用类型, class等
+    class MyGenericArray2<T, K> where T : struct
+    {
+    }
+
+    class SonMyGenericArray<T> : MyGenericArray<T>
+    {
+        private T[] array;
+
+        public SonMyGenericArray(int size) : base(size)
+        {
+        }
+    }
+    class SonMyGenericArray : MyGenericArray<int>
+    {
+        private int[] array;
+
+        public SonMyGenericArray(int size) : base(size)
+        {
+        }
     }
 }
