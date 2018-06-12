@@ -1,5 +1,6 @@
 ﻿#define debug
 //#undef debug
+#define trace
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,12 @@ namespace Preprocessor
             Console.WriteLine("if debug");
 
 
+#elif(trace)
+            Console.WriteLine("if trace"); 
+            
+
 #else
-              Console.WriteLine("else debug"); 
+            Console.WriteLine("else trace"); 
 
 #endif
 
