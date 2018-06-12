@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Generic
 {
+    delegate T NumberChanger<T>(T n);
     class Program
     {
         static void Main(string[] args)
@@ -46,8 +47,15 @@ namespace Generic
             Console.WriteLine("a:{0} b:{1}", a, b);
             Console.WriteLine("c:{0} d:{1}", c, d);
 
+            // 泛型在委托中的应用
+            NumberChanger<int> n1 = new NumberChanger<int>(AddNum);
+            NumberChanger<int> n2 = new NumberChanger<int>(MultNum);
+            n1(25);
+            n2(5);
+
             Console.ReadLine();
         }
+
 
         private static void Swap<T>(ref T a, ref T b)
         {
@@ -57,6 +65,18 @@ namespace Generic
             b = c;
         }
 
+        public static int num = 10;
+
+        public static int AddNum(int temp)
+        {
+            num += temp;
+            return num;
+        }
+        public static int MultNum(int temp)
+        {
+            num *= temp;
+            return num;
+        }
     }
 
     class MyGenericArray<T>
