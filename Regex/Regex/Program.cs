@@ -29,6 +29,9 @@ namespace Regex
             RegexMatch();
             RegexReplace();
             RegexSplit();
+
+            Matches();
+            Groups();
             Console.ReadLine();
           
 
@@ -68,6 +71,35 @@ namespace Regex
                 {
                     Console.WriteLine(item);
                 }
+            }
+        }
+
+        private static void Matches()
+        {
+            MatchCollection mc;
+
+            Regex r = new Regex("abc");
+            mc = r.Matches("123abc4abcd");
+            foreach (Match item in mc)
+            {
+                Console.WriteLine("{0} found at position {1}",
+                    item.Value, item.Index);
+                Console.WriteLine("{0}", item.Result("$&, hello jikexueyuan"));
+            }
+        }
+
+        private static void Groups() {
+            string input = "Born: July 28, 1989";
+            string pattern = @"\b(\w+)\s(\d{1,2}),\s(\d{4})\b";
+
+            Match mc = Regex.Match(input,pattern);
+            if (mc.Success)
+            {
+                for (int i = 0; i < mc.Groups.Count; i++)
+                {
+                    Console.WriteLine("group {0}: {1}",i,mc.Groups[i].Value);
+                }
+
             }
         }
 
